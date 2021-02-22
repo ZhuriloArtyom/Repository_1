@@ -7,7 +7,24 @@ public class Main {
         int[] Array = CreateArray(scanner.nextInt());
         while (true){
             System.out.println("Input directions. Options: 'create *', 'add * *', 'resize *', 'view *', 'exit'. '*' stands in for an integer.");
+            switch (scanner.next().charAt(1)){
+                case 'a':{
+                    Array =  AddToArray(scanner.nextInt(), scanner.nextInt(), Array);
+                }
+                case 'c':{
+                    Array = CreateArray(scanner.nextInt());
+                }
+                case 'r':{
+                    Array = ResizeArray(scanner.nextInt(), Array);
 
+                }
+                case 'v':{
+                    System.out.println(Array[scanner.nextInt()]);
+                }
+                case 'e':{
+                    break;
+                }
+            }
         }
     }
     private static int[] CreateArray(int length) {
