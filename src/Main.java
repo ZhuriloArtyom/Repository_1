@@ -4,9 +4,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input the initial size of the array.");
-        int[] Arr = CreateArray(scanner.nextInt());
+        int[] Array = CreateArray(scanner.nextInt());
+        while (true){
+            System.out.println("Input directions. Options: 'create *', 'add * *', 'resize *', 'view *', 'exit'. '*' stands in for an integer.");
 
-
+        }
     }
     private static int[] CreateArray(int length) {
         return new int[length];
