@@ -12,4 +12,17 @@ public class Main {
         Array[index] = element;
         return Array;
     }
+    private static int[] ResizeArray(int length, int[] OldArray) {
+        int[] NewArray = CreateArray(length);
+        if (OldArray.length < length){
+            for(int i = 0; i<length;i++){
+                NewArray[i] = OldArray[i];
+            }}
+        else {
+            for(int i = 0; i < OldArray.length;i++){
+                NewArray[i] = OldArray[i];
+            }
+        }
+        return NewArray;
+    }
 }
