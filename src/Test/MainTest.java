@@ -17,4 +17,18 @@ public class MainTest extends Assertions{
         assertEquals(5, Array[1]);
 
     }
+    @Test
+    public void ResizeArrayTest1(){
+        int[] Array = new int[5];
+        Array[4] = 6;
+        Array = Main.ResizeArray(7, Array);
+        assertEquals(6, Array[4]);
+        assertEquals(7, Array.length);
+    }
+    @Test
+    public void ResizeArrayTest2(){
+        int[] Array = new int[5];
+        Array = Main.ResizeArray(3, Array);
+        assertEquals(3, Array.length);
+    }
 }
