@@ -1,5 +1,3 @@
-package Code;
-
 import java.util.Scanner;
 
 public class Main {
@@ -29,14 +27,14 @@ public class Main {
             }
         }
     }
-    public static int[] CreateArray(int length) {
+    private static int[] CreateArray(int length) {
         return new int[length];
     }
-    public static int[] AddToArray(int index, int element, int[] Array) {
+    private static int[] AddToArray(int index, int element, int[] Array) {
         Array[index] = element;
         return Array;
     }
-    public static int[] ResizeArray(int length, int[] OldArray) {
+    private static int[] ResizeArray(int length, int[] OldArray) {
         int[] NewArray = CreateArray(length);
         if (OldArray.length < length){
             for(int i = 0; i<length;i++){
