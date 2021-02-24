@@ -1,4 +1,4 @@
-package Code;
+package Homework_1.Code;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ public class Main {
         System.out.println("Input the initial size of the array.");
         int[] Array = CreateArray(scanner.nextInt());
         while (true){
-            System.out.println("Input directions. Options: 'create *', 'add * *', 'resize *', 'view *', 'exit'. '*' stands in for an integer.");
+            System.out.println("Input directions. Options: 'create [Array length]', 'add [index] [number]', 'resize [length]', 'view [index]', 'exit'.");
             switch (scanner.next().charAt(1)){
                 case 'a':{
                     Array =  AddToArray(scanner.nextInt(), scanner.nextInt(), Array);

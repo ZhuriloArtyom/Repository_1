@@ -1,5 +1,5 @@
-package Test;
-import Code.Main;
+package Homework_1.Test;
+import Homework_1.Code.Main;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
