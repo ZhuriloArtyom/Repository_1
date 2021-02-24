@@ -53,6 +53,13 @@ public class Main {
         }
         return NewArray;
     }
+    public static int[] RemoveFromArray(int index, int[] Array) {
+        int[] ProvisionalArray = new int[Array.length-1];
+        for(int i = Array.length-1; i > index; i--){
+            ProvisionalArray[i-1] = Array[i];
+        }
+        return ProvisionalArray;
+    }
 }
 
 
