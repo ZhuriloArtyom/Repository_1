@@ -1,5 +1,6 @@
 package impl;
 import base.*;
+import base.DoubleLinkedListElement_Interface;
 
 public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     int Size;
@@ -41,6 +42,19 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     @Override
     public DoubleLinkedListElement_Interface ReturnPrev(DoubleLinkedListElement_Interface CurrentElement) {
         return CurrentElement.GetPrevious();
+    }
+
+    @Override
+    public void AddElement(Object Data, DoubleLinkedListElement_Interface CurrentElement) {
+        DoubleLinkedListElement_Interface AddedElement = new DoubleLinkedListElement(CurrentElement, Data, CurrentElement.GetNext());
+        CurrentElement.GetNext().ChangePrevious(AddedElement);
+        CurrentElement.ChangeNext(AddedElement);
+    }
+
+    @Override
+    public void DeleteElement(DoubleLinkedListElement_Interface CurrentElement) {
+        CurrentElement.GetNext().ChangePrevious(CurrentElement.GetPrevious());
+        CurrentElement.GetPrevious().ChangeNext(CurrentElement.GetNext());
     }
 
 
