@@ -1,9 +1,15 @@
-public class DoubleLinkedElement <T> implements DoubleLinkedElement_Interface{
+public class DoubleLinkedListElement <T> implements DoubleLinkedListElement_Interface{
     private int Key;
     private int Next;
     private int Previous;
     private T Data;
 
+    public DoubleLinkedListElement(int Key, int Previous, T Data, int Next){
+        this.Key = Key;
+        this.Previous = Previous;
+        this.Data = Data;
+        this.Next = Next;
+    }
     @Override
     public int GetNext() {
         return Next;

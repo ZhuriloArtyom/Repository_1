@@ -1,4 +1,4 @@
-public interface DoubleLinkedElement_Interface <T> {
+public interface DoubleLinkedListElement_Interface <T> {
     int GetNext();
     int GetKey();
     int GetPrevious();
