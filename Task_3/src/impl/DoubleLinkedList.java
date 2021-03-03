@@ -14,16 +14,6 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     }
 
     @Override
-    public void SetTail(DoubleLinkedListElement_Interface NewTail) {
-        Tail = NewTail;
-    }
-
-    @Override
-    public void SetHead(DoubleLinkedListElement_Interface NewHead) {
-        Head = NewHead;
-    }
-
-    @Override
     public DoubleLinkedListElement_Interface ReturnTail() {
         return Tail;
     }
@@ -49,13 +39,38 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
         DoubleLinkedListElement_Interface AddedElement = new DoubleLinkedListElement(CurrentElement, Data, CurrentElement.GetNext());
         CurrentElement.GetNext().ChangePrevious(AddedElement);
         CurrentElement.ChangeNext(AddedElement);
+        Size++;
     }
 
     @Override
     public void DeleteElement(DoubleLinkedListElement_Interface CurrentElement) {
         CurrentElement.GetNext().ChangePrevious(CurrentElement.GetPrevious());
         CurrentElement.GetPrevious().ChangeNext(CurrentElement.GetNext());
+        if (CurrentElement == Tail) {
+            Tail = CurrentElement.GetPrevious();
+        }
+        if (CurrentElement == Head) {
+            Head = CurrentElement.GetPrevious();
+        }
+        Size--;
     }
 
+    @Override
+    public Object FindFromHead(int Steps) {
+        DoubleLinkedListElement_Interface CurrentElement = Head;
+        for (int i= 0; i < Steps; i++){
+            CurrentElement = CurrentElement.GetNext();
+        }
+        return CurrentElement.GetData();
+    }
+
+    @Override
+    public Object FindFromTail(int Steps) {
+        DoubleLinkedListElement_Interface CurrentElement = Tail;
+        for (int i= 0; i < Steps; i++){
+            CurrentElement = CurrentElement.GetPrevious();
+        }
+        return CurrentElement.GetData();
+    }
 
 }
