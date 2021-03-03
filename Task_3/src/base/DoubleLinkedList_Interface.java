@@ -12,5 +12,5 @@ public interface DoubleLinkedList_Interface<T> {
       void DeleteElement(DoubleLinkedListElement_Interface CurrentElement);
       T FindFromHead(int Steps);
       T FindFromTail(int Steps);
-
+      void ChangeData(DoubleLinkedListElement_Interface CurrentElement, T NewData);
 }

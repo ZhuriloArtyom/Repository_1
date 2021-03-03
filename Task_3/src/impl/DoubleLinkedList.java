@@ -73,4 +73,10 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
         return CurrentElement.GetData();
     }
 
+    @Override
+    public void ChangeData(DoubleLinkedListElement_Interface CurrentElement, Object NewData) {
+        AddElement(NewData, CurrentElement);
+        DeleteElement(CurrentElement);
+    }
+
 }
