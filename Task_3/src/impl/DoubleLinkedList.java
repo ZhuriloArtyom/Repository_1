@@ -6,14 +6,16 @@ import java.util.Scanner;
 import java.lang.reflect.UndeclaredThrowableException;
 
 public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
-    int Size;
+    int Size =1;
     private DoubleLinkedListElement_Interface Head;
     private DoubleLinkedListElement_Interface Tail;
     private DoubleLinkedListElement_Interface Dummy;
 
     @Override
     public void  CreateDummy() {
-        Dummy = new DoubleLinkedListElement( Dummy, null, Dummy);
+        DoubleLinkedListElement_Interface Element = new DoubleLinkedListElement(null,1, null);
+        Dummy = new DoubleLinkedListElement( Element, null, Element);
+        Dummy.ChangePrevious(Dummy); Dummy.ChangeNext(Dummy);
         Head = Dummy;
         Tail = Dummy;
     }
@@ -22,7 +24,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     public DoubleLinkedList_Interface CreateList(int Size) {
         DoubleLinkedList_Interface List = new DoubleLinkedList();
         List.CreateDummy();
-        DoubleLinkedListElement_Interface CurrentElement = Dummy;
+        DoubleLinkedListElement_Interface CurrentElement = List.ReturnHead();
         Scanner scanner = new Scanner(System.in);
         for(int i = 0; i<Size; i++){
             List.AddElement(scanner.next(), CurrentElement);
@@ -88,7 +90,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
                 e.printStackTrace();
             }
         }
-        DoubleLinkedListElement_Interface CurrentElement = Head;
+        DoubleLinkedListElement_Interface CurrentElement = Dummy;
         for (int i= 0; i < Steps; i++){
             CurrentElement = CurrentElement.GetNext();
         }
@@ -104,7 +106,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
                 e.printStackTrace();
             }
         }
-        DoubleLinkedListElement_Interface CurrentElement = Tail;
+        DoubleLinkedListElement_Interface CurrentElement = Dummy;
         for (int i= 0; i < Steps; i++){
             CurrentElement = CurrentElement.GetPrevious();
         }
