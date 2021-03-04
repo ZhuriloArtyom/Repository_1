@@ -2,6 +2,8 @@ package impl;
 import base.*;
 import base.DoubleLinkedListElement_Interface;
 
+import java.lang.reflect.UndeclaredThrowableException;
+
 public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     int Size;
     private DoubleLinkedListElement_Interface Head;
@@ -36,7 +38,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
 
     @Override
     public void AddElement(Object Data, DoubleLinkedListElement_Interface CurrentElement) {
-        DoubleLinkedListElement_Interface AddedElement = new DoubleLinkedListElement(CurrentElement, Data, CurrentElement.GetNext());
+        DoubleLinkedListElement AddedElement = new DoubleLinkedListElement(CurrentElement, Data, CurrentElement.GetNext());
         CurrentElement.GetNext().ChangePrevious(AddedElement);
         CurrentElement.ChangeNext(AddedElement);
         Size++;
@@ -44,8 +46,8 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
 
     @Override
     public void DeleteElement(DoubleLinkedListElement_Interface CurrentElement) {
-        CurrentElement.GetNext().ChangePrevious(CurrentElement.GetPrevious());
-        CurrentElement.GetPrevious().ChangeNext(CurrentElement.GetNext());
+        CurrentElement.GetNext().ChangePrevious((DoubleLinkedListElement) CurrentElement.GetPrevious());
+        CurrentElement.GetPrevious().ChangeNext((DoubleLinkedListElement) CurrentElement.GetNext());
         if (CurrentElement == Tail) {
             Tail = CurrentElement.GetPrevious();
         }
@@ -56,27 +58,67 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     }
 
     @Override
-    public Object FindFromHead(int Steps) {
+    public DoubleLinkedListElement_Interface FindFromHead(int Steps) {
+        if (Steps>Size){
+            try {
+                throw new Exception();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         DoubleLinkedListElement_Interface CurrentElement = Head;
         for (int i= 0; i < Steps; i++){
             CurrentElement = CurrentElement.GetNext();
         }
-        return CurrentElement.GetData();
+        return CurrentElement;
     }
 
     @Override
-    public Object FindFromTail(int Steps) {
+    public DoubleLinkedListElement_Interface FindFromTail(int Steps) {
+        if (Steps>Size){
+            try {
+                throw new Exception();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         DoubleLinkedListElement_Interface CurrentElement = Tail;
         for (int i= 0; i < Steps; i++){
             CurrentElement = CurrentElement.GetPrevious();
         }
-        return CurrentElement.GetData();
+        return CurrentElement;
+    }
+
+    @Override
+    public DoubleLinkedListElement_Interface FindFromHeadByData(Object InputData) {
+        DoubleLinkedListElement_Interface CurrentElement = Head;
+        for(int i= 0; i<Size; i++){
+            if (CurrentElement.GetData() == InputData){return CurrentElement;}
+            CurrentElement = CurrentElement.GetNext();
+        }
+        return null;
+    }
+
+    @Override
+    public DoubleLinkedListElement_Interface FindFromTailByData(Object InputData) {
+
+        DoubleLinkedListElement_Interface CurrentElement = Tail;
+        for(int i= 0; i<Size; i++){
+            if (CurrentElement.GetData() == InputData){return CurrentElement;}
+            CurrentElement = CurrentElement.GetPrevious();
+        }
+        return null;
     }
 
     @Override
     public void ChangeData(DoubleLinkedListElement_Interface CurrentElement, Object NewData) {
         AddElement(NewData, CurrentElement);
         DeleteElement(CurrentElement);
+    }
+
+    @Override
+    public int ReturnSize() {
+        return Size;
     }
 
 }

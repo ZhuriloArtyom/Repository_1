@@ -1,7 +1,5 @@
 package base;
 
-import base.DoubleLinkedListElement_Interface;
-
 public interface DoubleLinkedList_Interface<T> {
       void CreateDummy();
       DoubleLinkedListElement_Interface ReturnTail();
@@ -10,7 +8,10 @@ public interface DoubleLinkedList_Interface<T> {
       DoubleLinkedListElement_Interface ReturnPrev(DoubleLinkedListElement_Interface CurrentElement);
       void AddElement (T Data,DoubleLinkedListElement_Interface CurrentElement);
       void DeleteElement(DoubleLinkedListElement_Interface CurrentElement);
-      T FindFromHead(int Steps);
-      T FindFromTail(int Steps);
+      DoubleLinkedListElement_Interface FindFromHead(int Steps);
+      DoubleLinkedListElement_Interface FindFromTail(int Steps);
+      DoubleLinkedListElement_Interface FindFromHeadByData(T InputData);
+      DoubleLinkedListElement_Interface FindFromTailByData(T InputData);
       void ChangeData(DoubleLinkedListElement_Interface CurrentElement, T NewData);
+      int ReturnSize();
 }

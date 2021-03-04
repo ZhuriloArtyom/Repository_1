@@ -6,7 +6,7 @@ public class DoubleLinkedListElement <T> implements DoubleLinkedListElement_Inte
     private DoubleLinkedListElement_Interface Previous;
     private T Data;
 
-    public DoubleLinkedListElement( DoubleLinkedListElement_Interface Previous, T Data, DoubleLinkedListElement_Interface Next){
+    public DoubleLinkedListElement(DoubleLinkedListElement_Interface Previous, T Data, DoubleLinkedListElement_Interface Next){
         this.Previous = Previous;
         this.Data = Data;
         this.Next = Next;
