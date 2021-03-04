@@ -26,4 +26,5 @@ public class DoubleLinkedListTest extends Assertions{
         assertEquals(List.FindFromHead(1).GetData(), "5");
     }
 
+    
 }
