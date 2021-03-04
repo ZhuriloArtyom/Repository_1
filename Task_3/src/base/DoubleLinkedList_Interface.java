@@ -2,6 +2,7 @@ package base;
 
 public interface DoubleLinkedList_Interface<T> {
       void CreateDummy();
+      DoubleLinkedList_Interface CreateList(int Size);
       DoubleLinkedListElement_Interface ReturnTail();
       DoubleLinkedListElement_Interface ReturnHead();
       DoubleLinkedListElement_Interface ReturnNext(DoubleLinkedListElement_Interface CurrentElement);

@@ -1,6 +1,7 @@
 package impl;
 import base.*;
 import base.DoubleLinkedListElement_Interface;
+import java.util.Scanner;
 
 import java.lang.reflect.UndeclaredThrowableException;
 
@@ -13,6 +14,21 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     @Override
     public void  CreateDummy() {
         Dummy = new DoubleLinkedListElement( Dummy, null, Dummy);
+        Head = Dummy;
+        Tail = Dummy;
+    }
+
+    @Override
+    public DoubleLinkedList_Interface CreateList(int Size) {
+        DoubleLinkedList_Interface List = new DoubleLinkedList();
+        List.CreateDummy();
+        DoubleLinkedListElement_Interface CurrentElement = Dummy;
+        Scanner scanner = new Scanner(System.in);
+        for(int i = 0; i<Size; i++){
+            List.AddElement(scanner.next(), CurrentElement);
+            CurrentElement = CurrentElement.GetNext();
+        }
+        return List;
     }
 
     @Override
@@ -41,6 +57,12 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
         DoubleLinkedListElement AddedElement = new DoubleLinkedListElement(CurrentElement, Data, CurrentElement.GetNext());
         CurrentElement.GetNext().ChangePrevious(AddedElement);
         CurrentElement.ChangeNext(AddedElement);
+        if (AddedElement.GetNext() == Head){
+            Head = AddedElement;
+        }
+        if (AddedElement.GetPrevious() == Tail){
+            Tail = AddedElement;
+        }
         Size++;
     }
 
