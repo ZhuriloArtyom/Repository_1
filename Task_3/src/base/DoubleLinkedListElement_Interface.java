@@ -1,6 +1,5 @@
 package base;
 
-import impl.DoubleLinkedListElement;
 
 public interface DoubleLinkedListElement_Interface <T> {
     DoubleLinkedListElement_Interface GetNext();
