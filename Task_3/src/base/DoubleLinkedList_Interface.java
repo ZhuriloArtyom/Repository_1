@@ -5,8 +5,6 @@ public interface DoubleLinkedList_Interface<T> {
       DoubleLinkedList_Interface CreateList(int Size);
       DoubleLinkedListElement_Interface ReturnTail();
       DoubleLinkedListElement_Interface ReturnHead();
-      DoubleLinkedListElement_Interface ReturnNext(DoubleLinkedListElement_Interface CurrentElement);
-      DoubleLinkedListElement_Interface ReturnPrev(DoubleLinkedListElement_Interface CurrentElement);
       void AddElement (T Data,DoubleLinkedListElement_Interface CurrentElement);
       void DeleteElement(DoubleLinkedListElement_Interface CurrentElement);
       DoubleLinkedListElement_Interface FindFromHead(int Steps);

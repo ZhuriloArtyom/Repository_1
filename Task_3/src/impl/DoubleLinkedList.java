@@ -44,15 +44,6 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     }
 
 
-    @Override
-    public DoubleLinkedListElement_Interface ReturnNext(DoubleLinkedListElement_Interface CurrentElement) {
-        return CurrentElement.GetNext();
-    }
-
-    @Override
-    public DoubleLinkedListElement_Interface ReturnPrev(DoubleLinkedListElement_Interface CurrentElement) {
-        return CurrentElement.GetPrevious();
-    }
 
     @Override
     public void AddElement(Object Data, DoubleLinkedListElement_Interface CurrentElement) {
