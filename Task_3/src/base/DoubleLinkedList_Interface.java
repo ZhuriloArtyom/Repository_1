@@ -12,5 +12,6 @@ public interface DoubleLinkedList_Interface<T> {
       DoubleLinkedListElement_Interface FindFromHeadByData(T InputData);
       DoubleLinkedListElement_Interface FindFromTailByData(T InputData);
       void ChangeData(DoubleLinkedListElement_Interface CurrentElement, T NewData);
+      DoubleLinkedListElement_Interface GetDummy();
       int ReturnSize();
 }

@@ -21,10 +21,15 @@ public class Stack implements Stack_Interface {
     }
 
     @Override
-    public Object pop() {
-        Object Data = List.ReturnTail().GetData();
-        List.DeleteElement(List.ReturnTail());
-        return Data;
+    public Object pop() throws Exception {
+        if(IsEmpty){
+            Object Data = List.ReturnTail().GetData();
+            List.DeleteElement(List.ReturnTail());
+            if (List.ReturnTail() ==  List.GetDummy()){IsEmpty= true;}
+            return Data;
+        }
+        else { throw new Exception();}
+
     }
 
     @Override
