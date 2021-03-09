@@ -132,6 +132,11 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     }
 
     @Override
+    public DoubleLinkedListElement_Interface ReturnDummy() {
+        return Dummy;
+    }
+
+    @Override
     public int ReturnSize() {
         return Size;
     }
