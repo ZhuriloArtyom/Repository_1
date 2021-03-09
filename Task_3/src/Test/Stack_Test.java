@@ -24,3 +24,4 @@ public class Stack_Test extends Assertions{
         assertTrue(Stack.IsEmpty());
     }
 }
+
