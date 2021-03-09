@@ -8,7 +8,13 @@ public class Stack_impl<T> implements Stack {
     boolean IsEmpty;
 
     @Override
+    public boolean IsEmpty() {
+        return IsEmpty;
+    }
+
+    @Override
     public void CreateStack() {
+        List = new DoubleLinkedList();
         List = List.CreateList(0);
         IsEmpty = true;
     }
