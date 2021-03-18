@@ -23,4 +23,5 @@ public class Queue_Test extends Assertions{
         assertEquals(Queue.Peek(),  "Test");
         assertEquals(Queue.Dequeue(),  "Test");
     }
+    
 }
