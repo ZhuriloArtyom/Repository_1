@@ -5,7 +5,7 @@ import base.Task_3.DoubleLinkedList_Interface;
 import java.util.Scanner;
 
 public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
-    int Size =1;
+    int Size =0;
     private DoubleLinkedListElement_Interface Head;
     private DoubleLinkedListElement_Interface Tail;
     private DoubleLinkedListElement_Interface Dummy;
