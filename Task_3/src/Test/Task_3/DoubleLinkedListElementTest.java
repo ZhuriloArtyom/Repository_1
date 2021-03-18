@@ -1,6 +1,6 @@
-package Test;
-import impl.DoubleLinkedListElement;
-import base.DoubleLinkedListElement_Interface;
+package Test.Task_3;
+import impl.Task_3.DoubleLinkedListElement;
+import base.Task_3.DoubleLinkedListElement_Interface;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 public class DoubleLinkedListElementTest extends Assertions{

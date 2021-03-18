@@ -1,5 +1,5 @@
-package impl;
-import base.*;
+package impl.Task_3;
+import base.Task_3.DoubleLinkedListElement_Interface;
 
 public class DoubleLinkedListElement <T> implements DoubleLinkedListElement_Interface {
     private DoubleLinkedListElement_Interface Next;

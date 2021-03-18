@@ -1,9 +1,9 @@
-package Test;
-import base.DoubleLinkedListElement_Interface;
-import impl.DoubleLinkedListElement;
+package Test.Task_3;
+import base.Task_3.DoubleLinkedListElement_Interface;
+import impl.Task_3.DoubleLinkedListElement;
 
-import impl.DoubleLinkedList;
-import base.DoubleLinkedList_Interface;
+import impl.Task_3.DoubleLinkedList;
+import base.Task_3.DoubleLinkedList_Interface;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;

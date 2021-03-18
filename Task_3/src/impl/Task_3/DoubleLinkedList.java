@@ -1,9 +1,8 @@
-package impl;
-import base.*;
-import base.DoubleLinkedListElement_Interface;
-import java.util.Scanner;
+package impl.Task_3;
+import base.Task_3.DoubleLinkedListElement_Interface;
+import base.Task_3.DoubleLinkedList_Interface;
 
-import java.lang.reflect.UndeclaredThrowableException;
+import java.util.Scanner;
 
 public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     int Size =1;
@@ -135,6 +134,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
     public DoubleLinkedListElement_Interface GetDummy() {
         return Dummy;
     }
+
 
     @Override
     public int ReturnSize() {
