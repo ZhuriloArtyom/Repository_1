@@ -17,6 +17,7 @@ public class DeQ_Test extends Assertions{
         assertEquals(DeQ.PopFront(),  "Test");
         assertEquals(DeQ.PeekFront(),  0);
     }
+    
     @Test
     public void BackTest(){
         Dequeue DeQ = new Dequeue_impl();
