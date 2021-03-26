@@ -66,7 +66,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedList_Interface {
             Tail = CurrentElement.GetPrevious();
         }
         if (CurrentElement == Head) {
-            Head = CurrentElement.GetPrevious();
+            Head = CurrentElement.GetNext();
         }
         Size--;
     }

@@ -1,6 +1,4 @@
 package Test.Task_5;
-import base.Task_4.Stack;
-import impl.Task_4.Stack_impl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import base.Task_5.Queue;
