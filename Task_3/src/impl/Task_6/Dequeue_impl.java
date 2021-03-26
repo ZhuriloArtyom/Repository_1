@@ -22,21 +22,25 @@ public class Dequeue_impl implements Dequeue {
 
     @Override
     public Object PopFront() {
-        return null;
+        Object Data = List.ReturnHead().GetData();
+        List.DeleteElement(List.ReturnHead());
+        return Data;
     }
 
     @Override
     public Object PopBack() {
-        return null;
+        Object Data = List.ReturnTail().GetData();
+        List.DeleteElement(List.ReturnTail());
+        return Data;
     }
 
     @Override
     public Object PeekFront() {
-        return null;
+        return List.ReturnHead().GetData();
     }
 
     @Override
     public Object PeekBack() {
-        return null;
+        return List.ReturnTail().GetData();
     }
 }
