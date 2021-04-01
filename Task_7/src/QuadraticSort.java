@@ -18,4 +18,5 @@ public class QuadraticSort {
             data[i] = max;
         }
     }
+    
 }
