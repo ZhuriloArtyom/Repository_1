@@ -34,7 +34,7 @@ public class BinarySearchTree_impl implements BinarySearchTree{
             if (Integer.parseInt(Data) >= Integer.parseInt(Element.GetData())){
                 if (Element.GetRight() == null){
                     Element.SetRight(new BinarySearchTreeElement_impl(Data));
-                    Element.GetLeft().SetRoot(Element);
+                    Element.GetRight().SetRoot(Element);
                     break;
                 }
                 else Element = Element.GetRight();
@@ -100,7 +100,8 @@ public class BinarySearchTree_impl implements BinarySearchTree{
             BinarySearchTreeElement CurrentElement = Successor(Element);
             while (true){
                 if (Predecessor(CurrentElement) == null){
-                    Successor(CurrentElement).SetRoot(CurrentElement.GetRoot());
+                    if (Successor(CurrentElement) != null){
+                        Successor(CurrentElement).SetRoot(CurrentElement.GetRoot());}
                     if (Integer.parseInt(InitialRoot.GetData()) > Integer.parseInt(CurrentElement.GetData())){
                         CurrentElement.GetRoot().SetLeft(Successor(CurrentElement));
                     }
