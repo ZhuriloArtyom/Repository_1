@@ -69,16 +69,32 @@ public class BinarySearchTree_impl implements BinarySearchTree{
 
     @Override
     public void Delete(BinarySearchTreeElement Element) {
-        if (Element.GetLeft() == null || Element.GetRight() == null){
+        if (Element.GetLeft() == null && Element.GetRight() == null){
             if (Element.GetRoot().GetLeft() == Element){
-                Element.GetRoot().SetLeft(Element.GetLeft());
-                Element.GetLeft().SetRoot(Element);
+                Element.GetRoot().SetLeft(null);
+            }
+            else {
+                Element.GetRoot().SetRight(null);
+            }
+
+        }
+        else if(Element.GetLeft() == null){
+            if (Element.GetRoot().GetLeft() == Element){
+                Element.GetRoot().SetLeft(Element.GetRight());
             }
             else {
                 Element.GetRoot().SetRight(Element.GetRight());
-                Element.GetRight().SetRoot(Element);
             }
-
+            Element.GetRight().SetRoot(Element.GetRoot());
+        }
+        else if(Element.GetRight() == null){
+            if (Element.GetRoot().GetLeft() == Element){
+                Element.GetRoot().SetLeft(Element.GetLeft());
+            }
+            else {
+                Element.GetRoot().SetRight(Element.GetLeft());
+            }
+            Element.GetLeft().SetRoot(Element.GetRoot());
         }
         else{
             BinarySearchTreeElement CurrentElement = Successor(Element);
