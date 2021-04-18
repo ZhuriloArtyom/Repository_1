@@ -29,7 +29,17 @@ public class BinarySearchTree_impl implements BinarySearchTree{
 
     @Override
     public void Insert(String Data) {
-
+        BinarySearchTreeElement Element = InitialRoot;
+        while (true){
+            if (Integer.parseInt(Data) >= Integer.parseInt(Element.GetData())){
+                if (Element.GetRight() == null){Element.SetRight(new BinarySearchTreeElement_impl(Data));}
+                else Element = Element.GetRight();
+            }
+            else{
+                if (Element.GetLeft() == null){Element.SetLeft(new BinarySearchTreeElement_impl(Data));}
+                else Element = Element.GetLeft();
+            }
+        }
     }
 
     @Override
