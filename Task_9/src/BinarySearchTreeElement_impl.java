@@ -4,11 +4,11 @@ public class BinarySearchTreeElement_impl implements BinarySearchTreeElement{
     private BinarySearchTreeElement Right;
     private String Data;
 
-    public BinarySearchTreeElement_impl(BinarySearchTreeElement Root, BinarySearchTreeElement Left, BinarySearchTreeElement Right, String Data){
-        this.Root = Root;
+    public BinarySearchTreeElement_impl(String Data){
+        this.Root = null;
         this.Data = Data;
-        this.Left = Left;
-        this.Right = Right;
+        this.Left = null;
+        this.Right = null;
     }
 
     @Override
