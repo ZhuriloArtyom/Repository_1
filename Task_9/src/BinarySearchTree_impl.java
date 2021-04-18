@@ -34,13 +34,20 @@ public class BinarySearchTree_impl implements BinarySearchTree{
 
     @Override
     public BinarySearchTreeElement Min() {
-        return null;
+        BinarySearchTreeElement Element = InitialRoot;
+        while (true){
+            if (Element.GetLeft() == null){return Element;}
+            Element = Element.GetLeft();
+        }
     }
 
     @Override
     public BinarySearchTreeElement Max() {
-        return null;
-    }
+        BinarySearchTreeElement Element = InitialRoot;
+        while (true){
+            if (Element.GetRight() == null){return Element;}
+            Element = Element.GetRight();
+        }    }
 
     @Override
     public void Delete(BinarySearchTreeElement Element) {
