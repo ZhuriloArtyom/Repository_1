@@ -1,4 +1,8 @@
-public class BinarySearchTreeElement_impl implements BinarySearchTreeElement{
+package Task_9;
+
+import Task_9.BinarySearchTreeElement;
+
+public class BinarySearchTreeElement_impl implements BinarySearchTreeElement {
     private BinarySearchTreeElement Root;
     private BinarySearchTreeElement Left;
     private BinarySearchTreeElement Right;

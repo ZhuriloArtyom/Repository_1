@@ -1,3 +1,8 @@
+package Task_9;
+
+import Task_9.BinarySearchTree;
+import Task_9.BinarySearchTreeElement_impl;
+import Task_9.BinarySearchTree_impl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

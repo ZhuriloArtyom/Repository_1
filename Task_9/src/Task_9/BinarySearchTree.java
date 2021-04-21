@@ -1,3 +1,5 @@
+package Task_9;
+
 public interface BinarySearchTree {
     BinarySearchTreeElement GetInitialRoot();
     void SetRoot(BinarySearchTreeElement NewRoot);
