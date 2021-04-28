@@ -34,4 +34,9 @@ public class AVLElement_impl extends BinarySearchTreeElement_impl implements AVL
     public boolean IsRight() {
         return IsRightNod;
     }
+
+    @Override
+    public void SetHeight(int Height) {
+        HeightDifference = Height;
+    }
 }

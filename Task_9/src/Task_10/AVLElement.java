@@ -6,4 +6,5 @@ public interface AVLElement extends BinarySearchTreeElement {
     void ChangeHeight(boolean Change);
     void SetIsRight(boolean Direction);
     boolean IsRight();
+    void SetHeight(int Height);
 }

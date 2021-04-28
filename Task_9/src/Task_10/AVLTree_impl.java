@@ -15,6 +15,8 @@ public class AVLTree_impl extends BinarySearchTree_impl implements AVLTree{
                     NewElement.SetIsRight(true);
                     Element.SetRight(NewElement);
                     Element.GetRight().SetRoot(Element);
+                    HeightDifferenceAdjustments((AVLElement) Element, true);
+                    HeightDifferenceCorrection((AVLElement) Element);
                     break;
                 }
                 else Element = Element.GetRight();
@@ -24,13 +26,14 @@ public class AVLTree_impl extends BinarySearchTree_impl implements AVLTree{
                     NewElement.SetIsRight(false);
                     Element.SetLeft(NewElement);
                     Element.GetLeft().SetRoot(Element);
+                    HeightDifferenceAdjustments((AVLElement) Element, false);
+                    HeightDifferenceCorrection((AVLElement) Element);
                     break;
                 }
                 else Element = Element.GetLeft();
             }
         }
-        HeightDifferenceAdjustments((AVLElement) Element, true);
-        HeightDifferenceCorrection((AVLElement) Element);
+
     }
 
     @Override
@@ -130,6 +133,86 @@ public class AVLTree_impl extends BinarySearchTree_impl implements AVLTree{
                 A.SetRoot(B);
                 A.GetRight().SetRoot(A);
                 Element.GetLeft().SetRoot(Element);
+            }
+        }
+    }
+
+    @Override
+    public void Delete(AVLElement Element) {
+        if (Element.GetLeft() == null && Element.GetRight() == null){
+            if (!Element.IsRight()){
+                boolean Y = Element.IsRight();
+                Element.GetRoot().SetLeft(null);
+                HeightDifferenceAdjustments((AVLElement) Element.GetRoot(), true);
+                HeightDifferenceCorrection((AVLElement) Element.GetRoot());
+            }
+            else {
+                Element.GetRoot().SetRight(null);
+                HeightDifferenceAdjustments((AVLElement) Element.GetRoot(), false);
+                HeightDifferenceCorrection((AVLElement) Element.GetRoot());
+            }
+
+        }
+        else if(Element.GetLeft() == null){
+            if (Element.GetRoot().GetLeft() == Element){
+                AVLElement A = (AVLElement)Element.GetRight();
+                A.SetHeight(Element.GetHeight());
+                Element.GetRoot().SetLeft(A);
+                HeightDifferenceAdjustments(A, false);
+                HeightDifferenceCorrection(A);
+            }
+            else {
+                AVLElement A = (AVLElement)Element.GetRight();
+                A.SetHeight(Element.GetHeight());
+                Element.GetRoot().SetRight(A);
+                HeightDifferenceAdjustments(A, false);
+                HeightDifferenceCorrection(A);
+            }
+            Element.GetRight().SetRoot(Element.GetRoot());
+        }
+        else if(Element.GetRight() == null){
+            if (Element.GetRoot().GetLeft() == Element){
+                AVLElement A = (AVLElement)Element.GetLeft();
+                A.SetHeight(Element.GetHeight());
+                Element.GetRoot().SetLeft(A);
+                HeightDifferenceAdjustments(A, true);
+                HeightDifferenceCorrection(A);
+            }
+            else {
+                AVLElement A = (AVLElement)Element.GetLeft();
+                A.SetHeight(Element.GetHeight());
+                Element.GetRoot().SetRight(A);
+                HeightDifferenceAdjustments(A, true);
+                HeightDifferenceCorrection(A);
+            }
+            Element.GetLeft().SetRoot(Element.GetRoot());
+        }
+        else{
+            AVLElement CurrentElement = (AVLElement)Successor(Element);
+            while (true){
+                if (Predecessor(CurrentElement) == null){
+                    AVLElement B = (AVLElement) CurrentElement.GetRoot();
+                    boolean Change = !CurrentElement.IsRight();
+                    if (Successor(CurrentElement) != null){
+                        Successor(CurrentElement).SetRoot(CurrentElement.GetRoot());}
+                      if (CurrentElement.IsRight()){
+                          CurrentElement.GetRoot().SetLeft(Successor(CurrentElement));
+                     }
+                        else CurrentElement.GetRoot().SetRight(Successor(CurrentElement));
+                        Element.GetRight().SetRoot(CurrentElement);
+                        Element.GetLeft().SetRoot(CurrentElement);
+                        CurrentElement.SetLeft(Element.GetLeft());
+                        CurrentElement.SetRight(Element.GetRight());
+                     if (Integer.parseInt(InitialRoot.GetData()) > Integer.parseInt(CurrentElement.GetData())){
+                         Element.GetRoot().SetLeft(CurrentElement);
+                     }
+                    else Element.GetRoot().SetRight(CurrentElement);
+                    CurrentElement.SetRoot(Element.GetRoot());
+                    HeightDifferenceAdjustments(B, Change);
+                    HeightDifferenceCorrection(B);
+                    break;
+                }
+                else CurrentElement = (AVLElement) Predecessor(CurrentElement);
             }
         }
     }
