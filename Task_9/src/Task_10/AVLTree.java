@@ -3,6 +3,7 @@ import Task_9.BinarySearchTree;
 import Task_9.BinarySearchTreeElement;
 
 public interface AVLTree extends BinarySearchTree{
+    void SetRoot(AVLElement NewRoot);
     void HeightDifferenceAdjustments(AVLElement Element, boolean Change);
     void HeightDifferenceCorrection(AVLElement Element);
     boolean SimpleTurnCheck(AVLElement Element);

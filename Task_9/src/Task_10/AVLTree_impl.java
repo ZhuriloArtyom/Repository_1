@@ -6,6 +6,27 @@ public class AVLTree_impl extends BinarySearchTree_impl implements AVLTree{
     private BinarySearchTreeElement InitialRoot;
 
     @Override
+    public AVLElement Min() {
+        AVLElement Element = (AVLElement) InitialRoot;
+        while (true){
+            if (Element.GetLeft() == null){return Element;}
+            Element = (AVLElement) Element.GetLeft();
+        }
+    }
+
+    @Override
+    public AVLElement Max() {
+        AVLElement Element = (AVLElement) InitialRoot;
+        while (true){
+            if (Element.GetRight() == null){return Element;}
+            Element = (AVLElement) Element.GetRight();
+        }    }
+
+    @Override
+    public void SetRoot(AVLElement NewRoot) {
+        InitialRoot = NewRoot;
+    }
+    @Override
     public void Insert(String Data) {
         AVLElement NewElement = new AVLElement_impl(Data);
         BinarySearchTreeElement Element = InitialRoot;
@@ -75,25 +96,27 @@ public class AVLTree_impl extends BinarySearchTree_impl implements AVLTree{
     public void SimpleTurn(AVLElement Element) {
         if(Element.GetHeight()>0){
             AVLElement A = (AVLElement) Element.GetRight();
-            if(Element.IsRight()){Element.GetRoot().SetRight(A); }
-            else{Element.GetRoot().SetLeft(A);}
+            if(Element.IsRight()){if(Element.GetRoot()!= null)Element.GetRoot().SetRight(A); }
+            else{if(Element.GetRoot()!= null)Element.GetRoot().SetLeft(A);}
             A.SetRoot(Element.GetRoot());
             A.GetLeft().SetRoot(Element);
             Element.SetRight(A.GetLeft());
             A.SetLeft(Element);
             Element.SetRoot(A);
             A.GetRight().SetRoot(A);
+            if (InitialRoot==Element){InitialRoot=A;}
         }
         else{
             AVLElement A = (AVLElement) Element.GetLeft();
-            if(Element.IsRight()){Element.GetRoot().SetRight(A); }
-            else{Element.GetRoot().SetLeft(A);}
+            if(Element.IsRight()){if(Element.GetRoot()!= null)Element.GetRoot().SetRight(A); }
+            else{if(Element.GetRoot()!= null)Element.GetRoot().SetLeft(A);}
             A.SetRoot(Element.GetRoot());
-            A.GetRight().SetRoot(Element);
+            if(A.GetRight()!= null)A.GetRight().SetRoot(Element);
             Element.SetLeft(A.GetRight());
             A.SetRight(Element);
             Element.SetRoot(A);
-            A.GetLeft().SetRoot(A);
+            if(A.GetLeft()!= null)A.GetLeft().SetRoot(A);
+            if (InitialRoot==Element){InitialRoot=A;}
         }
     }
 
@@ -102,37 +125,40 @@ public class AVLTree_impl extends BinarySearchTree_impl implements AVLTree{
         if(Element.GetHeight()>0){
             AVLElement A = (AVLElement) Element.GetRight();
             AVLElement B = (AVLElement) Element.GetRight().GetLeft();
-            if(Element.IsRight()){Element.GetRoot().SetRight(B); }
-            else{Element.GetRoot().SetLeft(B);}
+            if(Element.IsRight()){if(Element.GetRoot()!= null) Element.GetRoot().SetRight(B); }
+            else{ if(Element.GetRoot()!= null) Element.GetRoot().SetLeft(B);}
             B.SetRoot(Element.GetRoot());
-            B.GetLeft().SetRoot(A);
-            A.SetRight(B.GetLeft());
-            B.GetRight().SetRoot(Element);
-            Element.SetLeft(B.GetRight());
+            if(B.GetRight()!= null){B.GetRight().SetRoot(A);}
+            A.SetLeft(B.GetRight());
+            if(B.GetLeft()!= null){B.GetLeft().SetRoot(Element);}
+            Element.SetRight(B.GetLeft());
             B.SetRight(Element);
             Element.SetRoot(B);
             B.SetLeft(A);
             A.SetRoot(B);
-            A.GetLeft().SetRoot(A);
-            Element.GetRight().SetRoot(Element);
+            if(A.GetLeft()!=null) A.GetLeft().SetRoot(A);
+            if(Element.GetRight()!=null)Element.GetRight().SetRoot(Element);
+            if (InitialRoot==Element){InitialRoot=A;}
         }
         else{
             {
                 AVLElement A = (AVLElement) Element.GetLeft();
                 AVLElement B = (AVLElement) Element.GetLeft().GetRight();
-                if(Element.IsRight()){Element.GetRoot().SetRight(B); }
-                else{Element.GetRoot().SetLeft(B);}
+                if(Element.IsRight()){if(Element.GetRoot()!= null)Element.GetRoot().SetRight(B); }
+                else{if(Element.GetRoot()!= null)Element.GetRoot().SetLeft(B);}
                 B.SetRoot(Element.GetRoot());
-                B.GetRight().SetRoot(A);
-                A.SetLeft(B.GetRight());
-                B.GetLeft().SetRoot(Element);
-                Element.SetRight(B.GetLeft());
+                if(B.GetRight()!= null)B.GetRight().SetRoot(A);
+                A.SetRight(B.GetLeft());
+                if(B.GetLeft()!= null)B.GetLeft().SetRoot(Element);
+                Element.SetLeft(B.GetRight());
                 B.SetLeft(Element);
                 Element.SetRoot(B);
                 B.SetRight(A);
                 A.SetRoot(B);
-                A.GetRight().SetRoot(A);
-                Element.GetLeft().SetRoot(Element);
+                if(A.GetRight()!= null)A.GetRight().SetRoot(A);
+                if(Element.GetLeft()!= null)Element.GetLeft().SetRoot(Element);
+                if (InitialRoot==Element){InitialRoot=A;}
+
             }
         }
     }
