@@ -8,7 +8,7 @@ public interface BinarySearchTree {
     void Insert(String Data);
     BinarySearchTreeElement Min();
     BinarySearchTreeElement Max();
-    void Delete(BinarySearchTreeElement Element);
+   void Delete(BinarySearchTreeElement Element);
     BinarySearchTreeElement Successor(BinarySearchTreeElement Element);
     BinarySearchTreeElement Predecessor(BinarySearchTreeElement Element);
 }

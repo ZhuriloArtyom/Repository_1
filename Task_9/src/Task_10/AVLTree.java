@@ -9,5 +9,4 @@ public interface AVLTree extends BinarySearchTree{
     boolean SimpleTurnCheck(AVLElement Element);
     void SimpleTurn(AVLElement Element);
     void ComplexTurn(AVLElement Element);
-    void Delete(AVLElement Element);
 }

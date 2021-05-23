@@ -50,7 +50,7 @@ public class AVLETest extends Assertions{
         Tree.Insert("72");
         Tree.Insert("80");
         Tree.Delete(Tree.Search("66"));
-        assertEquals(Tree.GetInitialRoot().GetLeft().GetData(),"57" );
+        assertEquals(Tree.GetInitialRoot().GetLeft().GetData(),"5" );
     }
 
 
