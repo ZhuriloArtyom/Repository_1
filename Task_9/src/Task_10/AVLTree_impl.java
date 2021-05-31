@@ -104,7 +104,7 @@ public class AVLTree_impl extends BinarySearchTree_impl implements AVLTree{
             A.SetRoot(Element.GetRoot());
             if(A.GetLeft()!= null)A.GetLeft().SetRoot(Element);
             Element.SetRight(A.GetLeft());
-            ((AVLElement) Element.GetRight()).SetIsRight(true);
+            if((AVLElement) Element.GetRight()!=null){((AVLElement) Element.GetRight()).SetIsRight(true);};
             A.SetLeft(Element);
             Element.SetIsRight(false);
             Element.SetRoot(A);
@@ -115,19 +115,21 @@ public class AVLTree_impl extends BinarySearchTree_impl implements AVLTree{
         }
         else{
             AVLElement A = (AVLElement) Element.GetLeft();
-            if(Element.IsRight()){if(Element.GetRoot()!= null)Element.GetRoot().SetRight(A); }
-            else{if(Element.GetRoot()!= null)Element.GetRoot().SetLeft(A);}
+            if(Element.IsRight()){if(Element.GetRoot()!= null)Element.GetRoot().SetRight(A); A.SetIsRight(true);}
+            else{if(Element.GetRoot()!= null)Element.GetRoot().SetLeft(A); A.SetIsRight(false);}
             A.SetRoot(Element.GetRoot());
             if(A.GetRight()!= null)A.GetRight().SetRoot(Element);
             Element.SetLeft(A.GetRight());
+            if((AVLElement) Element.GetRight()!=null){((AVLElement) Element.GetRight()).SetIsRight(true);
             A.SetRight(Element);
+            Element.SetIsRight(true);
             Element.SetRoot(A);
             if(A.GetLeft()!= null)A.GetLeft().SetRoot(A);
             Element.SetHeight(0);
             A.SetHeight(0);
             if (InitialRoot==Element){InitialRoot=A;}
         }
-    }
+    }}
 
     @Override
     public void ComplexTurn(AVLElement Element) {
