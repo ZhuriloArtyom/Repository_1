@@ -1,7 +1,5 @@
 package Task_9;
 
-import Task_9.BinarySearchTree;
-
 public class BinarySearchTree_impl implements BinarySearchTree {
     public BinarySearchTreeElement InitialRoot;
 
