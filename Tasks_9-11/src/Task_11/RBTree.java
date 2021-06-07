@@ -5,4 +5,5 @@ import Task_9.BinarySearchTreeElement;
 
 public interface RBTree extends BinarySearchTree {
     void SetRoot(RBTreeElement NewRoot);
+    void ColourCorrection(RBTreeElement Element);
 }

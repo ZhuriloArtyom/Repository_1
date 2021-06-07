@@ -5,4 +5,7 @@ import Task_9.BinarySearchTreeElement;
 public interface RBTreeElement extends BinarySearchTreeElement {
     void TurnRed();
     void TurnBlack();
+    boolean IsRed();
+    boolean IsRight();
+    void SetIsRight(boolean i);
 }

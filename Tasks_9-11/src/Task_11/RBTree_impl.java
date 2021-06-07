@@ -18,6 +18,84 @@ public class RBTree_impl extends BinarySearchTree_impl implements RBTree{
         NewRoot.TurnBlack();
         InitialRoot = NewRoot;
     }
+
+    @Override
+    public void ColourCorrection(RBTreeElement Element) {
+        RBTreeElement Y = (RBTreeElement) Element.GetRoot();
+        if(Element.IsRed() && ( Y).IsRed()) {
+            if ((Y).IsRight())
+            {
+                RBTreeElement Z = (RBTreeElement) Y.GetRoot();
+                RBTreeElement X = (RBTreeElement) Y.GetRoot().GetLeft();
+                if((X).IsRed()){
+                    Y.TurnBlack();
+                    X.TurnBlack();
+                    if(Z != InitialRoot) {Z.TurnRed();
+                    ColourCorrection(Z);}
+                }
+
+            else if (!Element.IsRight()){
+                Element.SetRoot(Z);
+                Y.SetLeft(Element.GetRight());
+                Element.SetRight(Y);
+                Y.SetRoot(Element);
+                Z.SetRight(Element);
+                ColourCorrection(Y);
+            }
+            else {
+                    if ((X).IsRed()) {
+                        Y.TurnBlack();
+                        X.TurnBlack();
+                        Z.TurnRed();
+                        if (Z== InitialRoot){InitialRoot = Y;}
+                        Z.SetRight(Y.GetLeft());
+                        Z.GetRight().SetRoot(Z);
+                        Z.SetRoot(Y);
+                        Y.SetLeft(Z);
+                        Y.SetRoot(dummy);
+                        }
+                    }
+                }
+            else{
+                RBTreeElement Z = (RBTreeElement) Y.GetRoot();
+                RBTreeElement X = (RBTreeElement) Y.GetRoot().GetRight();
+                if((X).IsRed()){
+                    Y.TurnBlack();
+                    X.TurnBlack();
+                    if(Z != InitialRoot) {Z.TurnRed();
+                        ColourCorrection(Z);}
+                }
+
+                else if (Element.IsRight()){
+                    Element.SetRoot(Z);
+                    Y.SetRight(Element.GetLeft());
+                    Element.SetLeft(Y);
+                    Y.SetRoot(Element);
+                    Z.SetLeft(Element);
+                    ColourCorrection(Y);
+                }
+                else {
+                    if ((X).IsRed()) {
+                        Y.TurnBlack();
+                        X.TurnBlack();
+                        Z.TurnRed();
+                        if (Z== InitialRoot){InitialRoot = Y;}
+                        Z.SetLeft(Y.GetRight());
+                        Z.GetLeft().SetRoot(Z);
+                        Z.SetRoot(Y);
+                        Y.SetRight(Z);
+                        Y.SetRoot(dummy);
+                    }
+                }
+
+
+
+            }
+
+        }
+
+    }
+
     @Override
     public void Insert(String Data) {
         RBTreeElement Element = (RBTreeElement) InitialRoot;
@@ -39,7 +117,9 @@ public class RBTree_impl extends BinarySearchTree_impl implements RBTree{
                 else Element = (RBTreeElement) Element.GetLeft();
             }
         }
+        Element.SetIsRight(Element.GetRoot().GetRight()==Element);
         Element.SetRight(dummy);
         Element.SetLeft(dummy);
+        ColourCorrection(Element);
     }
 }
