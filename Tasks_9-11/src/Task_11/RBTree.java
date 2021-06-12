@@ -6,5 +6,5 @@ public interface RBTree extends BinarySearchTree {
     void SetRoot(RBTreeElement NewRoot);
     void ColourCorrection(RBTreeElement Element);
     void ColourCorrection2(RBTreeElement Element);
-
+    void DummyReset();
 }
