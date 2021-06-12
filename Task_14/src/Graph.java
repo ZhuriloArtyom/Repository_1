@@ -6,4 +6,5 @@ public interface Graph {
     void AddNode();
     void AddEdge(int Node1, int Node2, Float Weight );
     void ClearGraph();
+    void DeleteEdge(int Node1, int Node2);
 }

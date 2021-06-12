@@ -16,9 +16,13 @@ public class AjacencyListGraph implements Graph{
         public void SetPrev(ListElement newElement) {
             Prev = newElement;
         }
+        public boolean CheckNext() {
+            return Next!=null;
+        }
         public void AddNext(ListElement NewElement) {
             Next = NewElement;
-            NewElement.SetPrev(this);
+            if(CheckNext()){
+            NewElement.SetPrev(this);}
         }
     }
 
@@ -123,5 +127,14 @@ public class AjacencyListGraph implements Graph{
     public void ClearGraph() {
         Length=0;
         List=null;
+    }
+
+    @Override
+    public void DeleteEdge(int Node1, int Node2) {
+        ListElement CurrentElement = List[Node1].Next;
+        while(CurrentElement.Node!= Node2){
+            CurrentElement = CurrentElement.Next;
+        }
+        CurrentElement.Prev.AddNext(CurrentElement.Next);
     }
 }

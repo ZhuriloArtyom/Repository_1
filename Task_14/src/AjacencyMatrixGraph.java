@@ -82,6 +82,11 @@ public class AjacencyMatrixGraph implements Graph{
         Matrix = null;
     }
 
+    @Override
+    public void DeleteEdge(int Node1, int Node2) {
+        Matrix[Node1][Node2]= Float.POSITIVE_INFINITY;
+    }
+
     public void FillTheMatrix(Float[][] Matrix){
         for(int j = 0; j<vertex; j++){
             for(int i = 0; i<vertex; i++){
