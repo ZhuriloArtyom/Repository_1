@@ -8,4 +8,5 @@ public interface RBTreeElement extends BinarySearchTreeElement {
     boolean IsRed();
     boolean IsRight();
     void SetIsRight(boolean i);
+    void CopyColour(RBTreeElement Element);
 }

@@ -34,4 +34,14 @@ public class RBTreeElement_impl extends BinarySearchTreeElement_impl implements 
     public void SetIsRight(boolean i) {
         IsRight = i;
     }
+
+    @Override
+    public void CopyColour(RBTreeElement Element) {
+        if(Element.IsRed()){
+            TurnRed();
+        }
+        else{
+            TurnBlack();
+        }
+    }
 }
