@@ -2,7 +2,7 @@
 public class EdgesListGraph implements  Graph{
     Float[][] List;
     int Length;
-    
+
 
     @Override
     public void CreateGraph(int NumberOfNodes, Float... Edges) {
