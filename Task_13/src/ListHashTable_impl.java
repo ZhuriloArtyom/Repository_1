@@ -1,26 +1,36 @@
+import java.security.Key;
+
 public class ListHashTable_impl implements ListHashTable{
     int n;
     TableElement[] Table;
     public ListHashTable_impl(int n){
         this.n = n;
         this.Table = new TableElement[n];
+        for(int i=0; i<n;i++){
+
+        }
     }
     public class TableElement{
         TableElement Next;
         TableElement Prev;
-        int Key;
-        String Value;
+        int Key ;
+        String Value ;
+        public TableElement(int key, String value){
+            this.Value =value;
+            this.Key=key;
+        }
         void Add(int key, String value){
             if(Value==null){
                 Value = value;
                 Key = key;
+                Next.Add(key, value);
             }
             else if(Next== null){
-                Next = new TableElement();
+                Next = new TableElement(key, value);
                 Next.Prev = this;
 
             }
-            Next.Add(key, value);
+
 
         }
         String get(int key){
@@ -43,7 +53,12 @@ public class ListHashTable_impl implements ListHashTable{
 
     @Override
     public void Add(int key, String value) {
-        Table[key% n].Add(key, value);
+        if(Table[key%n]!=null){
+            Table[key% n].Add(key, value);
+        }
+        else{
+            Table[key% n] = new TableElement(key, value);
+        };
     }
 
     @Override
